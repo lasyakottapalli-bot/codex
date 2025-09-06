@@ -1,1 +1,68 @@
-iTerm
+EXceRICSE 1
+def first_non_repeating(arr):
+    freq = {}
+    for num in arr:
+        freq[num] = freq.get(num, 0) + 1
+    for num in arr:
+        if freq[num] == 1:
+            return num
+    return None
+arr = [4, 5, 1, 2, 1, 2, 4]
+print("First Non-repeating Element:", first_non_repeating(arr))
+
+EXCERSICSE 2 
+def smallest_missing(arr):
+    n = len(arr)
+    left, right = 0, n - 1
+    while left <= right:
+        mid = (left + right) // 2
+    if arr[mid] == mid + 1:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return left + 1
+arr = [1, 2, 3, 5, 6, 7]
+print("Smallest Missing Positive:", smallest_missing(arr))
+arr = [1, 2, 4, 6, 8, 10]
+target = 5
+
+EXCERISCE 3
+def ceiling_index(arr, target):
+    left, right = 0, len(arr) - 1
+    result = -1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] >= target:
+            result = mid
+            right = mid - 1
+        else:
+            left = mid + 1
+    return result
+
+arr = [1, 2, 4, 6, 8, 10]
+target = 5
+print("Ceiling Index of", target, ":", ceiling_index(arr, target))
+
+EXCERCISE 4
+
+def smart_temperature_lookup(temps, target):
+    left, right = 0, len(temps) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if temps[mid] == target:
+            return temps[mid]
+        elif temps[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    
+    # After binary search, check closest
+    candidates = []
+    if left < len(temps):
+        candidates.append(temps[left])
+    if right >= 0:
+        candidates.append(temps[right])
+    return min(candidates, key=lambda x: abs(x - target))
+temps = [15, 18, 21, 24, 30]
+target = 22
+print("Smart Temperature Lookup:", smart_temperature_lookup(temps, target))
