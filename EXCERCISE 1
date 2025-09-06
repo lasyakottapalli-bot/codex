@@ -1,0 +1,19 @@
+def first_non_repeating(arr):
+    freq = {}
+    # Count frequency of each element
+    for num in arr:
+        freq[num] = freq.get(num, 0) + 1
+    
+    # Find first element with frequency 1
+    for num in arr:
+        if freq[num] == 1:
+            return num
+    
+    return -1  # if all repeat
+
+
+arr1 = [9, 4, 9, 6, 7, 4]
+print("Output:", first_non_repeating(arr1))  # Expected: 6
+
+arr2 = [3, 3, 5, 5, 6, 6, 7, 7]
+print("Output:", first_non_repeating(arr2))  # Expected: -1
